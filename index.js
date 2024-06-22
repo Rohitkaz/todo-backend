@@ -209,10 +209,10 @@ app.delete("/todos/:id", async (req, res) => {
 
   const task_id = req.params.id;
   const data1 = await todos.findOneAndDelete({ user_id: id, _id: task_id });
-  console.log(data1);
-  const data = await todos.find({ user_id: id });
 
-  return res.send(data);
+  const data = await todos.find({ user_id: id });
+  console.log(data);
+  return res.status(200).send(data);
 });
 app.put("/todos", async (req, res) => {
   const task_id = req.body.task_id;
