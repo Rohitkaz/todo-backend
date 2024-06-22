@@ -95,7 +95,7 @@ app.post("/login", async (req, res) => {
       });
 
       res.status(200).json({ name });
-    } else res.status(401);
+    } else res.status(401).send("invalid username or password");
   }
 
   // verify the name
@@ -105,6 +105,14 @@ app.post("/login", async (req, res) => {
 app.get("/logout", (req, res) => {
   // console.log("hi");
   res.cookie("jwt", "", {
+    sameSite: "none",
+    maxAge: 0,
+    secure: true,
+    httpOnly: true,
+    domain: "localhost",
+    path: "/",
+  });
+  res.cookie("refreshToken", "", {
     sameSite: "none",
     maxAge: 0,
     secure: true,
