@@ -17,7 +17,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "todo-frontend-topaz-chi.vercel.app",
+    origin: "https://todo-frontend-topaz-chi.vercel.app",
 
     credentials: true,
   })
